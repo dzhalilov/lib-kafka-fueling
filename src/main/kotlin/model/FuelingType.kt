@@ -1,4 +1,4 @@
-package domain
+package model
 
 enum class FuelType {
     AI_92,
