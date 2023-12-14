@@ -6,12 +6,11 @@ plugins {
     id("maven-publish")
 }
 
-def githubUser = { System.getProperty("gradle.githubUser") }
-def githubToken = { System.getProperty("gradle.githubToken") }
+def githubUser = project.property('githubUser')
+def githubToken = project.property('githubToken')
 
 group = 'com.github.dzhalilov'
-//artifacts = 'lib-kafka-fueling'
-version = '1.8-SNAPSHOT'
+version = '2.2-SNAPSHOT'
 
 java {
     withSourcesJar()
@@ -27,6 +26,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.jetbrains.kotlin:kotlin-reflect'
     implementation 'org.springframework.kafka:spring-kafka'
+    implementation 'org.springframework.boot:spring-boot-configuration-processor'
 }
 
 publishing {
