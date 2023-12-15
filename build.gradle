@@ -6,8 +6,8 @@ plugins {
     id("maven-publish")
 }
 
-def githubUser = { System.getProperty("gradle.githubUser") }
-def githubToken = { System.getProperty("gradle.githubToken") }
+def githubUser = project.property('githubUser')
+def githubToken = project.property('githubToken')
 
 group = 'com.github.dzhalilov'
 //artifacts = 'lib-kafka-fueling'
