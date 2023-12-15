@@ -17,12 +17,14 @@ import org.springframework.kafka.listener.ConcurrentMessageListenerContainer
 import org.springframework.kafka.support.serializer.JsonDeserializer
 import org.springframework.kafka.support.serializer.JsonSerializer
 import service.KafkaStatusService
+import service.ListenerInterface
 
 @Configuration
 @EnableConfigurationProperties(KafkaProperties::class)
 @ConditionalOnProperty(name = ["status"], prefix = "service.kafka.send", havingValue = "true")
 class KafkaProcessingConfig(
-    private val kafkaProperties: KafkaProperties
+    private val kafkaProperties: KafkaProperties,
+    private val listenerInterface: ListenerInterface<OrderProcessingDto>
 ) {
 
     @Bean
@@ -59,5 +61,5 @@ class KafkaProcessingConfig(
     }
 
     @Bean
-    fun kafkaService(): KafkaStatusService = KafkaStatusService(kafkaProperties, producerFuelingStatus())
+    fun kafkaService(): KafkaStatusService = KafkaStatusService(kafkaProperties, producerFuelingStatus(), listenerInterface)
 }

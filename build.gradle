@@ -10,7 +10,7 @@ def githubUser = project.property('githubUser')
 def githubToken = project.property('githubToken')
 
 group = 'com.github.dzhalilov'
-version = '2.2-SNAPSHOT'
+version = '2.3-SNAPSHOT'
 
 java {
     withSourcesJar()
